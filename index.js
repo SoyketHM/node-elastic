@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const elasticsearch = require('elasticsearch');
 const verify = require('./verify');
+const search = require('./search');
 const app = express();
 
 const esClient = new elasticsearch.Client({
@@ -41,8 +42,9 @@ const test = function test() {
     const articles = fs.readFileSync('data.json', 'utf-8');
     bulkIndex('library', 'article', JSON.parse(articles));
 };
-test();
-verify();
+// test();
+// verify();
+search();
 
 
 const port = 5000;
